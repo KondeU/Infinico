@@ -21,7 +21,7 @@ Infinico通过json配置文件的形式来配置主题(theme)，使用方法如�
 - autorun对应应用自启动：表示应用是否加入自启动，若为true，则尝试将该应用加入开机自启动注册表，该功能需要管理员权限。
 - silence对应自启动静默：表示是否在自启动设置失败时，弹出警告对话框，若为true则静默不弹出告警，如果不使用管理员权限运行该程序，建议置为true来静默自启动配置失败告警。
 
-# 主题配置
+## 主题配置
 
 themes目录下用来存放主题，默认提供了一个敲木鱼的主题，主题名称为qiaomuyu，该主题的目录名即为qiaomuyu。
 具体的主题文件目录下，至少需要有一个theme.json文件来组织主题。
@@ -72,7 +72,7 @@ themes目录下用来存放主题，默认提供了一个敲木鱼的主题，�
 注意：配置文件的字段顺序不可更改，必须按如上示例的顺序组织。
 即：version-width-height-menus(name-shell)-shader-images(name-file)-audios(trigger-file)的顺序有严格要求，不可交换次序。
 
-# shader
+## shader
 
 SDF的shader，支持HLSL语言，可配置传送图像作为shader中的贴图，同时附加传送默认信息在constant buffer中可供使用，以qiaomuyu的主题举例。
 
