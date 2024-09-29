@@ -114,6 +114,8 @@ float4 ImagePixelProcess(int2 canvasPosition)是可供定制实现的SDF入口�
 
 **Shader的调试**：Infinico会将shader的编译错误信息输出到DebugMessage中，您可以使用[DebugView](https://learn.microsoft.com/zh-cn/sysinternals/downloads/debugview)进行查看。
 
+![image](https://github.com/user-attachments/assets/e862c690-4af7-4b89-ae31-95309656ac66)
+
 ## 窗口功能
 
 程序启动执行后，会在鼠标当前的位置创建浮动窗口，并同时创建应用的系统托盘图标，单击图标可以隐藏浮动窗口，再次单击则恢复显示。
