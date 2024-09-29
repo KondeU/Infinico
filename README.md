@@ -24,7 +24,8 @@ Infinico通过json配置文件的形式来配置主题(theme)，使用方法如�
 ## 主题配置
 
 themes目录下用来存放主题，默认提供了一个敲木鱼的主题，主题名称为qiaomuyu，该主题的目录名即为qiaomuyu。
-具体的主题文件目录下，至少需要有一个theme.json文件来组织主题。
+
+具体的主题文件目录下：至少需要有一个theme.json文件来组织主题。可选一个theme.ico文件作为主题图标文件，如果不提供该文件，将使用默认程序图标作为主题图标文件。
 
 ```json
 # theme.json
@@ -74,13 +75,14 @@ themes目录下用来存放主题，默认提供了一个敲木鱼的主题，�
 
 ## shader
 
-SDF的shader，支持HLSL语言，可配置传送图像作为shader中的贴图，同时附加传送默认信息在constant buffer中可供使用，以qiaomuyu的主题举例。
+SDF的shader，支持HLSL语言，可配置传送图像作为shader中的贴图，同时附加传送默认信息在constant buffer中可供使用，以qiaomuyu的主题简单举例。
 
 ```hlsl
 // Input information:
 // float2 canvasSize;          @ width, height
 // float2 mouseCursor;         @ position: x, y
 // float2 clickFlytime;        @ mouse: left, right
+// uint2  clickCount;          @ mouse: left, right
 // float2 cpuAndMemoryState;   @ percentage: cpu, memory
 // SamplerState simpleSampler; @ linear sampler with wrap address mode.
 
@@ -104,7 +106,37 @@ float4 ImagePixelProcess(int2 canvasPosition)
 - float2 canvasSize：(x,y)为图像的(宽,高)，像素单位
 - float2 mouseCursor：当前的鼠标坐标位置(x,y)，像素单位，若鼠标不在窗口内，则为(-50000000, -50000000)
 - float2 clickFlytime：鼠标单击后的飞行时间，若在窗口内单击，则flytime会归0，(x,y)分别对应左键和右键，单位是毫秒
+- uint2  clickCount：鼠标单击的累计次数
 - float2 cpuAndMemoryState：(x,y)分别是当前的CPU使用率与内存使用率，0~100的百分比
 
 float4 ImagePixelProcess(int2 canvasPosition)是可供定制实现的SDF入口函数，canvasPosition是自定义算法当前处理的画布的位置值。
 返回值为当前处理的画布的位置的归一化输出颜色值，对应RGBA，取值范围0~1。
+
+## 窗口功能
+
+程序启动执行后，会在鼠标当前的位置创建浮动窗口，并同时创建应用的系统托盘图标，单击图标可以隐藏浮动窗口，再次单击则恢复显示。
+
+## 更多主题
+
+我们开放主题频道，大家可以自定义自己的主题并进行分享交流，充分碰撞想法。
+
+您可以前往idea讨论中心：https://github.com/KondeU/Infinico/discussions/categories/ideas
+
+## 更新日志
+
+**2024/9/29 1.2024.9.29**
+
+加入新功能，并修复一些bug，发布正式的版本。
+
+框架功能更新：
+1. 修复下发至shader的UBO数据中的memory usage单位规格错误的问题，调整为\[0.0, 100.0\]的百分比，与cpu usage的单位规格一致；
+2. 添加鼠标位置数据、单击统计数据下发至shader的UBO中的支持；
+3. 添加最小化至系统托盘的支持，单击系统托盘图标，可以将浮动窗口最小化到托盘中，再次点击则恢复显示，方便小组件的隐藏，系统托盘图标可用户自定义；
+4. 添加音频混叠的支持，快速播放多次音频时声音不会中断而是混叠；
+默认主题更新：
+1. 升级内置的敲木鱼主题的敲击木鱼声，高清影棚录制，敲击声深沉悠扬；
+2. 添加敲木鱼计数功能，功德数实时呈现。
+
+**2024/9/1 0.1.0.1**
+
+发布Infinico的初始版本！
