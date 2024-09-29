@@ -112,6 +112,8 @@ float4 ImagePixelProcess(int2 canvasPosition)
 float4 ImagePixelProcess(int2 canvasPosition)是可供定制实现的SDF入口函数，canvasPosition是自定义算法当前处理的画布的位置值。
 返回值为当前处理的画布的位置的归一化输出颜色值，对应RGBA，取值范围0~1。
 
+**Shader的调试：**Infinico会将shader的编译错误信息输出到DebugMessage中，您可以使用[DebugView](https://learn.microsoft.com/zh-cn/sysinternals/downloads/debugview)进行查看。
+
 ## 窗口功能
 
 程序启动执行后，会在鼠标当前的位置创建浮动窗口，并同时创建应用的系统托盘图标，单击图标可以隐藏浮动窗口，再次单击则恢复显示。
