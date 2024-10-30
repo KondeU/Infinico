@@ -67,7 +67,7 @@ themes目录下用来存放主题，默认提供了一个敲木鱼的主题，�
 - width&height字段：窗口（渲染画布）的大小，必须为大于0的整型数字，不能超过屏幕尺寸
 - shader字段：SDF的shader文件，支持HLSL语言
 - images字段：在shader中传递的图像，name为在shader中的贴图名称，对应于Texture2D<uint4>，file为图像在磁盘中的相对文件名，支持png格式图像
-- audios字段：管理音频播放，trigger目前支持left_click_down、right_click_down，分别对应鼠标左键和右键点击时播放音频，file为音频在磁盘中的相对文件名，支持wav格式音频
+- audios字段：管理音频播放，trigger目前支持left_click_down、right_click_down、left_click_up、right_click_up，分别对应鼠标左键和右键点击与松开时播放音频，file为音频在磁盘中的相对文件名，支持wav格式音频
 - menus字段：自定义右键功能菜单，name为菜单项名称，shell为要执行的shell脚本，支持bat语法
 
 注意：配置文件的字段顺序不可更改，必须按如上示例的顺序组织。
@@ -127,6 +127,10 @@ float4 ImagePixelProcess(int2 canvasPosition)是可供定制实现的SDF入口�
 您可以前往idea讨论中心：https://github.com/KondeU/Infinico/discussions/categories/ideas
 
 ## 更新日志
+
+**2024/10/30 1.2024.10.30**
+
+修复右键点击音频播放失效问题。
 
 **2024/9/29 1.2024.9.29**
 
